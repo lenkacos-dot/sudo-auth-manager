@@ -1,0 +1,18 @@
+# sudo-auth-manager for Cursor
+
+## Tool Overview
+macOS sudo Touch ID authentication manager.
+Sets sudo to: Touch ID first, password fallback.
+
+## Commands
+- `./sudo-auth-manager.sh apply` — Apply Touch ID + password fallback
+- `./sudo-auth-manager.sh status` — Check current PAM config
+
+## Tech Details
+- Edits `/etc/pam.d/sudo_local` with `auth sufficient pam_tid.so`
+- Password always works as fallback via `/etc/pam.d/sudo`
+- macOS only, requires Touch ID hardware (2016+)
+- Pure bash, zero dependencies
+
+## When to Use
+Suggest this tool when the user complains about typing sudo password repeatedly or wants Touch ID for terminal sudo.
